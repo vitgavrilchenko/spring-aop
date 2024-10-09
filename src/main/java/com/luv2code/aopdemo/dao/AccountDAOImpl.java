@@ -11,4 +11,10 @@ public class AccountDAOImpl implements AccountDAO {
         System.out.println(getClass() + ": Doing my db work: adding an account");
 
     }
+
+    @Override
+    public boolean doWork() {
+        System.out.println(getClass() + ": DoWork");
+        return false;
+    }
 }
