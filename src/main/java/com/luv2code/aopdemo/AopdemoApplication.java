@@ -25,6 +25,12 @@ public class AopdemoApplication {
         theAccountDAO.addAccount(account, true);
         theAccountDAO.doWork();
 
+        theAccountDAO.setName("fooBar");
+        theAccountDAO.setServiceName("silver");
+
+        String name = theAccountDAO.getName();
+        String serviceName = theAccountDAO.getServiceName();
+
         membershipDAO.addSillyMember();
         membershipDAO.goToSleep();
 

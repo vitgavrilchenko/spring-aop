@@ -10,15 +10,29 @@ import org.springframework.stereotype.Component;
 public class MyDemoLoggingAspect {
 
     @Pointcut("execution(* com.luv2code.aopdemo.dao.*.*(..))")
-    private void fotDaoPackage() {
+    private void forDaoPackage() {
     }
 
-    @Before("fotDaoPackage()")
+
+    @Pointcut("execution(* com.luv2code.aopdemo.dao.*.get*(..))")
+    private void getter() {
+    }
+
+
+    @Pointcut("execution(* com.luv2code.aopdemo.dao.*.set*(..))")
+    private void setter() {
+    }
+
+    @Pointcut("forDaoPackage() && !(getter() || setter())")
+    private void forDaoPackageNoGetterSetter() {}
+
+
+    @Before("forDaoPackageNoGetterSetter()")
     public void beforeAddAccountAdvice() {
         System.out.println("\n====>>> Executing @Before advice on method");
     }
 
-    @Before("fotDaoPackage()")
+    @Before("forDaoPackageNoGetterSetter()")
     public void performApiAnalytics() {
         System.out.println("====>>> Performing API analytics");
     }
