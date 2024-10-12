@@ -6,13 +6,10 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class MyDemoLoggingAspect {
-
+public class MyApiAnalyticsAspect {
 
     @Before("com.luv2code.aopdemo.aspect.LuvAopExpressions.forDaoPackageNoGetterSetter()")
-    public void beforeAddAccountAdvice() {
-
-        System.out.println("====>>> Executing @Before advice on method");
+    public void performApiAnalytics() {
+        System.out.println("====>>> Performing API analytics");
     }
-
 }
