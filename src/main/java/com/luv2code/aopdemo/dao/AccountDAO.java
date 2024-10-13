@@ -2,6 +2,8 @@ package com.luv2code.aopdemo.dao;
 
 import com.luv2code.aopdemo.Account;
 
+import java.util.List;
+
 public interface AccountDAO {
     void addAccount(Account account, boolean vipFlag);
 
@@ -14,4 +16,6 @@ public interface AccountDAO {
     String getName();
 
     void setName(String name);
+
+    List<Account> findAccounts();
 }

@@ -3,6 +3,9 @@ package com.luv2code.aopdemo.dao;
 import com.luv2code.aopdemo.Account;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Repository
 public class AccountDAOImpl implements AccountDAO {
 
@@ -40,5 +43,21 @@ public class AccountDAOImpl implements AccountDAO {
     public void setName(String name) {
         System.out.println(getClass() + ": setName");
         this.name = name;
+    }
+
+    @Override
+    public List<Account> findAccounts() {
+        List<Account> accountList = new ArrayList<>();
+
+        Account temp1 = new Account("John", "Sliver");
+        Account temp2 = new Account("Madhu", "Platinum");
+        Account temp3 = new Account("Luca", "Gold");
+
+        accountList.add(temp1);
+        accountList.add(temp2);
+        accountList.add(temp3);
+
+
+        return accountList;
     }
 }
