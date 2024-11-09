@@ -3,6 +3,7 @@ package com.luv2code.aopdemo.aspect;
 import com.luv2code.aopdemo.Account;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.core.annotation.Order;
@@ -14,6 +15,16 @@ import java.util.List;
 @Component
 @Order(2)
 public class MyDemoLoggingAspect {
+
+    @AfterThrowing(
+            pointcut = "execution(* com.luv2code.aopdemo.dao.AccountDAO.findAccounts(..))",
+            throwing = "theExc"
+    )
+    public void afterThrowingFindAccountsAdvice(JoinPoint theJointPoint, Throwable theExc) {
+        String method = theJointPoint.getSignature().toShortString();
+        System.out.println("\n=====> Executing @AfterThrowing on method: " + method);
+        System.out.println("\n=====> the exception is: " + theExc);
+    }
 
 
     @AfterReturning(
@@ -50,8 +61,5 @@ public class MyDemoLoggingAspect {
                 System.out.println("account level: " + account.getLevel());
             }
         }
-
-
     }
-
 }

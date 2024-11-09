@@ -18,4 +18,6 @@ public interface AccountDAO {
     void setName(String name);
 
     List<Account> findAccounts();
+
+    List<Account> findAccounts(boolean tripWire);
 }
