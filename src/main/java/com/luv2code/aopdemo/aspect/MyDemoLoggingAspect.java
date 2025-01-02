@@ -26,9 +26,10 @@ public class MyDemoLoggingAspect {
         try {
             result = proceedingJoinPoint.proceed();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("We have problem!: " + e.getMessage());
 
-            result = "Major accident! No Worries!";
+            throw e;
+
         }
 
         long end = System.currentTimeMillis();
