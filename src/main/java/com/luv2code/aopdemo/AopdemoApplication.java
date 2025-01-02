@@ -28,7 +28,18 @@ public class AopdemoApplication {
 
         //demoTheAfterAdvice(theAccountDAO);
 
-        demoTheAroundAdvice(trafficFortuneService);
+        //demoTheAroundAdvice(trafficFortuneService);
+        demoTheAroundAdviceHandleException(trafficFortuneService);
+    }
+
+    private void demoTheAroundAdviceHandleException(TrafficFortuneService trafficFortuneService) {
+        System.out.println("\nMain Program: demoTheAroundAdviceHandleException");
+        System.out.println("Calling getFortune()");
+
+        boolean tripWire = true;
+        String data = trafficFortuneService.getFortune(tripWire);
+        System.out.println("\nMy Fortune is: " + data);
+        System.out.println("Finished");
     }
 
     private void demoTheAroundAdvice(TrafficFortuneService trafficFortuneService) {
